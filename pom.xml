@@ -61,6 +61,7 @@
         <dep.nexus-staging-plugin.version>1.6.8</dep.nexus-staging-plugin.version>
         <dep.asm.version>6.2.1</dep.asm.version>
         <dep.gcs.version>1.9.17</dep.gcs.version>
+        <dep.jackson.version>2.9.10</dep.jackson.version>
 
         <!--
           America/Bahia_Banderas has:
