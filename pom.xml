@@ -46,6 +46,7 @@
 
         <dep.antlr.version>4.7.1</dep.antlr.version>
         <dep.airlift.version>0.178</dep.airlift.version>
+        <dep.jetty.version>9.4.26.v20200117</dep.jetty.version>
         <dep.packaging.version>${dep.airlift.version}</dep.packaging.version>
         <dep.slice.version>0.36</dep.slice.version>
         <dep.aws-sdk.version>1.11.445</dep.aws-sdk.version>
@@ -497,6 +498,16 @@
                 <groupId>io.airlift</groupId>
                 <artifactId>log</artifactId>
                 <version>${dep.airlift.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.http2</groupId>
+                        <artifactId>http2-common</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.http2</groupId>
+                        <artifactId>http2-client</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -533,6 +544,12 @@
                 <groupId>io.airlift</groupId>
                 <artifactId>configuration</artifactId>
                 <version>${dep.airlift.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-beanutils</groupId>
+                        <artifactId>commons-beanutils-core</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -545,6 +562,12 @@
                 <groupId>io.airlift</groupId>
                 <artifactId>testing</artifactId>
                 <version>${dep.airlift.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-beanutils</groupId>
+                        <artifactId>commons-beanutils-core</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -611,6 +634,24 @@
                 <groupId>io.airlift</groupId>
                 <artifactId>http-client</artifactId>
                 <version>${dep.airlift.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.http2</groupId>
+                        <artifactId>http2-common</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.http2</groupId>
+                        <artifactId>http2-client</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty.http2</groupId>
+                        <artifactId>http2-server</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.eclipse.jetty</groupId>
+                        <artifactId>jetty-server</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
@@ -1229,6 +1270,108 @@
                 <artifactId>failsafe</artifactId>
                 <version>2.0.1</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>4.2.0</version>
+            </dependency>
+
+
+            <!-- jetty -->
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-server</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlet</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-util</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-servlets</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-security</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-jmx</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-http</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-client</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-io</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty.http2</groupId>
+                <artifactId>http2-client</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty.http2</groupId>
+                <artifactId>http2-http-client-transport</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.eclipse.jetty.http2</groupId>
+                <artifactId>http2-server</artifactId>
+                <version>${dep.jetty.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.bval</groupId>
+                <artifactId>bval-jsr</artifactId>
+                <version>1.1.1</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>commons-beanutils</groupId>
+                        <artifactId>commons-beanutils-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>junit</groupId>
+                        <artifactId>junit</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -1448,3 +1591,4 @@
         </profile>
     </profiles>
 </project>
+
