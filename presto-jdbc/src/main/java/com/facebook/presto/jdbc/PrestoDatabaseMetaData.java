@@ -1490,10 +1490,33 @@ public class PrestoDatabaseMetaData
     {
         StringBuilder filter = new StringBuilder();
         filter.append(columnName).append(" LIKE ");
-        quoteStringLiteral(filter, pattern);
+        StringBuilder patternBuilder = new StringBuilder();
+        escapePatternWithUnderscore(patternBuilder, pattern);
+        quoteStringLiteral(filter, patternBuilder.toString());
         filter.append(" ESCAPE ");
         quoteStringLiteral(filter, SEARCH_STRING_ESCAPE);
         return filter.toString();
+    }
+
+    private static void escapePatternWithUnderscore(StringBuilder out, String value)
+    {
+        boolean previousWasSlash = false;
+        for (int i = 0; i < value.length(); i++) {
+            char c = value.charAt(i);
+            if (c == '_' && !previousWasSlash) {
+                out.append('\\');
+                out.append(c);
+            }
+            else {
+                out.append(c);
+            }
+            if (c == '\\' && !previousWasSlash) {
+                previousWasSlash = true;
+            }
+            else {
+                previousWasSlash = false;
+            }
+        }
     }
 
     private static void quoteStringLiteral(StringBuilder out, String value)
