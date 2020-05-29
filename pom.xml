@@ -764,6 +764,12 @@
                 <groupId>com.facebook.drift</groupId>
                 <artifactId>drift-transport-netty</artifactId>
                 <version>${dep.drift.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.netty</groupId>
+                        <artifactId>netty-all</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>
