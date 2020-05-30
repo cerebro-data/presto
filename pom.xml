@@ -765,6 +765,7 @@
                 <artifactId>drift-transport-netty</artifactId>
                 <version>${dep.drift.version}</version>
                 <exclusions>
+                    <!-- Exclude netty because this version has some CVEs -->
                     <exclusion>
                         <groupId>io.netty</groupId>
                         <artifactId>netty-all</artifactId>
