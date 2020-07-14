@@ -297,7 +297,6 @@
             <type>zip</type>
             <scope>provided</scope>
         </dependency>
-    </dependencies>
         <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty</artifactId>
