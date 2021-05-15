@@ -41,6 +41,7 @@ public class PrestoDriver
     static final int DRIVER_VERSION_MINOR;
 
     private static final String DRIVER_URL_START = "jdbc:presto:";
+    private static final String DRIVER_OKERA_URL_START = "jdbc:presto-okera:";
 
     private final OkHttpClient httpClient = new OkHttpClient.Builder()
             .addInterceptor(userAgent(DRIVER_NAME + "/" + DRIVER_VERSION))
@@ -97,7 +98,7 @@ public class PrestoDriver
     public boolean acceptsURL(String url)
             throws SQLException
     {
-        return url.startsWith(DRIVER_URL_START);
+        return url.startsWith(DRIVER_URL_START) || url.startsWith(DRIVER_OKERA_URL_START);
     }
 
     @Override
